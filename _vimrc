@@ -10,7 +10,7 @@ au BufNewFile,BufRead *.nsf setf cfg
 au BufNewFile,BufRead *.vsh,*.psh setf masm
 
 " as
-au BufNewFile,BufRead *.as setf actionscript20
+au BufNewFile,BufRead *.as setf actionscript
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
@@ -50,6 +50,6 @@ set backupdir=%Temp%
 set fileencodings=ucs-bom,utf-8,cp949
 
 if has( 'gui_running' )
-	set guifont=Consolas:h10:cANSI
+	set guifont=Droid_Sans_Mono:h10:cANSI
 endif
 
