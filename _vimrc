@@ -10,7 +10,7 @@ au BufNewFile,BufRead *.nsf setf cfg
 au BufNewFile,BufRead *.vsh,*.psh setf masm
 
 " as
-au BufNewFile,BufRead *.as setf actionscript20
+au BufNewFile,BufRead *.as setf actionscript
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
