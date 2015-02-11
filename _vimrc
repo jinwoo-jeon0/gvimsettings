@@ -46,6 +46,7 @@ set lines=50
 set nowrap
 set guioptions+=b
 set backupdir=%Temp%
+set directory=%Temp%
 
 set fileencodings=ucs-bom,utf-8,cp949
 
