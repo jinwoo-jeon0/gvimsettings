@@ -51,6 +51,6 @@ set directory=%Temp%
 set fileencodings=ucs-bom,utf-8,cp949
 
 if has( 'gui_running' )
-	set guifont=Droid_Sans_Mono:h10:cANSI
+	set guifont=Droid_Sans_Mono:h10:cDEFAULT
 endif
 
