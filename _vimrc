@@ -41,16 +41,18 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
-set columns=120
-set lines=50
 set nowrap
-set guioptions+=b
-set backupdir=%Temp%
-set directory=%Temp%
+if has( 'windows' )
+	set backupdir=%Temp%
+	set directory=%Temp%
+endif
 
 set fileencodings=ucs-bom,utf-8,cp949
 
 if has( 'gui_running' )
+	set columns=120
+	set lines=50
+	set guioptions+=b
 	set guifont=Droid_Sans_Mono:h10:cANSI
 endif
 
