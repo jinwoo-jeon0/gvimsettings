@@ -42,7 +42,7 @@ function MyDiff()
 endfunction
 
 set nowrap
-if has( 'windows' )
+if has( 'win32' )
 	set backupdir=%Temp%
 	set directory=%Temp%
 endif
