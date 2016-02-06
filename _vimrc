@@ -53,6 +53,6 @@ if has( 'gui_running' )
 	set columns=120
 	set lines=50
 	set guioptions+=b
-	set guifont=Droid_Sans_Mono:h10:cANSI
+	set guifont=Droid_Sans_Mono:h10:cDEFAULT
 endif
 
