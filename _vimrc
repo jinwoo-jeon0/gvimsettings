@@ -48,6 +48,8 @@ if has( 'win32' )
 endif
 
 set fileencodings=ucs-bom,utf-8,cp949
+set autochdir
+set number
 
 if has( 'gui_running' )
 	set columns=120
