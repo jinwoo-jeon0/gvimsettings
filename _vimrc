@@ -48,6 +48,7 @@ if has( 'win32' )
 endif
 
 set fileencodings=ucs-bom,utf-8,cp949
+set encoding=utf-8
 set autochdir
 set number
 
@@ -56,5 +57,6 @@ if has( 'gui_running' )
 	set lines=50
 	set guioptions+=b
 	set guifont=Droid_Sans_Mono:h10:cDEFAULT
+	set guifontwide=DotumChe:h10:cHANGEUL
 endif
 
