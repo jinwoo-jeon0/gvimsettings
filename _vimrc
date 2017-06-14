@@ -57,6 +57,7 @@ if has( 'gui_running' )
 	set lines=50
 	set guioptions+=b
 	set guifont=Droid_Sans_Mono:h10:cDEFAULT
-	set guifontwide=DotumChe:h10:cHANGEUL
+	set guifontwide=Noto\ Mono:h10:cANSI
+	set guifontwide=Noto\ Mono:h10:cHANGEUL
 endif
 
