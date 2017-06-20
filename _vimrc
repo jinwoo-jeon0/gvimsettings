@@ -51,6 +51,7 @@ set fileencodings=ucs-bom,utf-8,cp949
 set encoding=utf-8
 set autochdir
 set number
+set tabstop=4
 
 if has( 'gui_running' )
 	set columns=120
