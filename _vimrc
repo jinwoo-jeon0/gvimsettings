@@ -62,3 +62,8 @@ if has( 'gui_running' )
 	set guifontwide=Noto\ Mono:h10:cHANGEUL
 endif
 
+if has('gui')
+	unmap <C-F>
+	unmap <C-H>
+endif
+
