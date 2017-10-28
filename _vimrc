@@ -58,7 +58,6 @@ if has( 'gui' )
 	set lines=50
 	set guioptions+=b
 	set guifont=Noto\ Mono:h10:cDEFAULT
-	set guifontwide=Noto\ Mono:h10:cANSI
 	set guifontwide=Noto\ Mono:h10:cHANGEUL
 
 	unmap <C-F>
