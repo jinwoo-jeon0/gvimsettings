@@ -1,7 +1,7 @@
 " Vim support file to detect file types
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last Change:	2016 Aug 26
+" Last Change:	2017 Apr 20
 
 " Listen very carefully, I will say this only once
 if exists("did_load_filetypes")
@@ -288,7 +288,8 @@ au BufNewFile,BufRead *.bib			setf bib
 au BufNewFile,BufRead *.bst			setf bst
 
 " BIND configuration
-au BufNewFile,BufRead named.conf,rndc.conf	setf named
+" sudoedit uses namedXXXX.conf
+au BufNewFile,BufRead named*.conf,rndc*.conf	setf named
 
 " BIND zone
 au BufNewFile,BufRead named.root		setf bindzone
@@ -309,7 +310,11 @@ au BufNewFile,BufRead *.bl			setf blank
 au BufNewFile,BufRead */etc/blkid.tab,*/etc/blkid.tab.old   setf xml
 
 " Bazel (http://bazel.io)
-autocmd BufRead,BufNewFile *.bzl,BUILD,WORKSPACE setfiletype bzl
+autocmd BufRead,BufNewFile *.bzl,WORKSPACE 	setf bzl
+if has("fname_case")
+  " There is another check for BUILD further below.
+  autocmd BufRead,BufNewFile BUILD		setf bzl
+endif
 
 " C or lpc
 au BufNewFile,BufRead *.c			call s:FTlpc()
@@ -673,8 +678,17 @@ au BufNewFile,BufRead *.dtd			setf dtd
 " DTS/DSTI (device tree files)
 au BufNewFile,BufRead *.dts,*.dtsi		setf dts
 
-" EDIF (*.edf,*.edif,*.edn,*.edo)
-au BufNewFile,BufRead *.ed\(f\|if\|n\|o\)	setf edif
+" EDIF (*.edf,*.edif,*.edn,*.edo) or edn
+au BufNewFile,BufRead *.ed\(f\|if\|o\)		setf edif
+au BufNewFile,BufRead *.edn
+	\ if getline(1) =~ '^\s*(\s*edif\>' |
+	\   setf edif |
+	\ else |
+	\   setf clojure |
+	\ endif
+
+" EditorConfig (close enough to dosini)
+au BufNewFile,BufRead .editorconfig		setf dosini
 
 " Embedix Component Description
 au BufNewFile,BufRead *.ecd			setf ecd
@@ -806,6 +820,10 @@ au BufNewFile,BufRead *.gp,.gprc		setf gp
 au BufNewFile,BufRead */.gnupg/options		setf gpg
 au BufNewFile,BufRead */.gnupg/gpg.conf		setf gpg
 au BufNewFile,BufRead */usr/*/gnupg/options.skel setf gpg
+if !empty($GNUPGHOME)
+  au BufNewFile,BufRead $GNUPGHOME/options	setf gpg
+  au BufNewFile,BufRead $GNUPGHOME/gpg.conf	setf gpg
+endif
 
 " gnash(1) configuration files
 au BufNewFile,BufRead gnashrc,.gnashrc,gnashpluginrc,.gnashpluginrc setf gnash
@@ -855,7 +873,7 @@ au BufNewFile,BufRead *.ht			setf haste
 au BufNewFile,BufRead *.htpp			setf hastepreproc
 
 " Hercules
-au BufNewFile,BufRead *.vc,*.ev,*.rs,*.sum,*.errsum	setf hercules
+au BufNewFile,BufRead *.vc,*.ev,*.sum,*.errsum	setf hercules
 
 " HEX (Intel)
 au BufNewFile,BufRead *.hex,*.h32		setf hex
@@ -1350,6 +1368,9 @@ endfunc
 " Not Quite C
 au BufNewFile,BufRead *.nqc			setf nqc
 
+" NSE - Nmap Script Engine - uses Lua syntax
+au BufNewFile,BufRead *.nse			setf lua
+
 " NSIS
 au BufNewFile,BufRead *.nsi,*.nsh		setf nsis
 
@@ -1753,6 +1774,9 @@ au BufNewFile,BufRead *.rb,*.rbw		setf ruby
 " RubyGems
 au BufNewFile,BufRead *.gemspec			setf ruby
 
+" Rust
+au BufNewFile,BufRead *.rs			setf rust
+
 " Rackup
 au BufNewFile,BufRead *.ru			setf ruby
 
@@ -2109,7 +2133,10 @@ au BufNewFile,BufRead ssh_config,*/.ssh/config	setf sshconfig
 au BufNewFile,BufRead sshd_config		setf sshdconfig
 
 " Stata
-au BufNewFile,BufRead *.ado,*.class,*.do,*.imata,*.mata   setf stata
+au BufNewFile,BufRead *.ado,*.do,*.imata,*.mata	setf stata
+" Also *.class, but not when it's a Java bytecode file
+au BufNewFile,BufRead *.class
+	\ if getline(1) !~ "^\xca\xfe\xba\xbe" | setf stata | endif
 
 " SMCL
 au BufNewFile,BufRead *.hlp,*.ihlp,*.smcl	setf smcl
@@ -2247,7 +2274,7 @@ func! s:FTtex()
 endfunc
 
 " ConTeXt
-au BufNewFile,BufRead tex/context/*/*.tex,*.mkii,*.mkiv   setf context
+au BufNewFile,BufRead tex/context/*/*.tex,*.mkii,*.mkiv,*.mkvi   setf context
 
 " Texinfo
 au BufNewFile,BufRead *.texinfo,*.texi,*.txi	setf texinfo
@@ -2260,6 +2287,9 @@ au BufNewFile,BufRead .tidyrc,tidyrc		setf tidy
 
 " TF mud client
 au BufNewFile,BufRead *.tf,.tfrc,tfrc		setf tf
+
+" tmux configuration
+au BufNewFile,BufRead {.,}tmux*.conf		setf tmux
 
 " TPP - Text Presentation Program
 au BufNewFile,BufReadPost *.tpp			setf tpp
@@ -2576,6 +2606,11 @@ au BufNewFile,BufRead *asterisk*/*voicemail.conf* call s:StarSetf('asteriskvm')
 " Bazaar version control
 au BufNewFile,BufRead bzr_log.*			setf bzr
 
+" Bazel build file
+if !has("fname_case")
+  au BufNewFile,BufRead BUILD			setf bzl
+endif
+
 " BIND zone
 au BufNewFile,BufRead */named/db.*,*/bind/db.*	call s:StarSetf('bindzone')
 
@@ -2660,6 +2695,9 @@ au BufNewFile,BufRead mutt{ng,}rc*,Mutt{ng,}rc*		call s:StarSetf('muttrc')
 
 " Nroff macros
 au BufNewFile,BufRead tmac.*			call s:StarSetf('nroff')
+
+" OpenBSD hostname.if
+au BufNewFile,BufRead /etc/hostname.*		call s:StarSetf('config')
 
 " Pam conf
 au BufNewFile,BufRead */etc/pam.d/*		call s:StarSetf('pamconf')
