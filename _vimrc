@@ -53,7 +53,7 @@ set autochdir
 set number
 set tabstop=4
 
-if has( 'gui_running' )
+if has( 'gui' )
 	set columns=120
 	set lines=50
 	set guioptions+=b
