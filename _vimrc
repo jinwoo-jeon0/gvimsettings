@@ -57,7 +57,7 @@ if has( 'gui' )
 	set columns=120
 	set lines=50
 	set guioptions+=b
-	set guifont=Droid_Sans_Mono:h10:cDEFAULT
+	set guifont=Noto\ Mono:h10:cDEFAULT
 	set guifontwide=Noto\ Mono:h10:cANSI
 	set guifontwide=Noto\ Mono:h10:cHANGEUL
 
