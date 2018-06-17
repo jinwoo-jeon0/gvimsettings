@@ -58,7 +58,9 @@ if has( 'gui' )
 	set lines=50
 	set guioptions+=b
 	set guifont=Noto\ Mono:h10:cDEFAULT
-	set guifontwide=Dotumche:h10:cHANGEUL
+	if has( 'win32' )
+		set guifontwide=Dotumche:h10:cHANGEUL
+	endif
 
 	unmap <C-F>
 	unmap <C-H>
