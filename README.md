@@ -1,7 +1,7 @@
 # Mac
 
 ```sh
-git clone ssh://madknight@git.code.sf.net/p/gvimsettings/code ~/Documents/gvimsettings
+git clone https://github.com/jinwoo-jeon0/gvimsettings.git/p/gvimsettings/code ~/Documents/gvimsettings
 ln -s Documents/gvimsettings/_vimrc ~/.vimrc
 ```
 
@@ -9,7 +9,7 @@ ln -s Documents/gvimsettings/_vimrc ~/.vimrc
 
 ```cmd
 scoop install vim
-git clone ssh://madknight@git.code.sf.net/p/gvimsettings/code gvimsettings
+git clone https://github.com/jinwoo-jeon0/gvimsettings.git/p/gvimsettings/code gvimsettings
 ```
 
 As an adminitrator
