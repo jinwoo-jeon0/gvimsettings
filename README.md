@@ -1,3 +1,7 @@
+# Font
+
+[Fira Code](https://github.com/tonsky/FiraCode)
+
 # Mac
 
 ```sh
