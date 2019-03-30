@@ -2,22 +2,27 @@
 
 [Fira Code](https://github.com/tonsky/FiraCode)
 
-# Mac
+# Mac / Ubuntu
 
 ```sh
-git clone https://github.com/jinwoo-jeon0/gvimsettings.git/p/gvimsettings/code ~/Documents/gvimsettings
-ln -s Documents/gvimsettings/_vimrc ~/.vimrc
+git clone https://github.com/jinwoo-jeon0/gvimsettings.git
+```
+
+Add `gvimsettings/_vimrc` to `$HOME/.vimrc`.
+
+```vim
+source $(parent)/gvimsettings/_vimrc
 ```
 
 # Windows
 
 ```cmd
 scoop install vim
-git clone https://github.com/jinwoo-jeon0/gvimsettings.git/p/gvimsettings/code gvimsettings
+git clone https://github.com/jinwoo-jeon0/gvimsettings.git
 ```
 
-As an adminitrator
+Add `gvimsettings/_vimrc` to `%USERPROFILE%/_vimrc`
 
-```cmd
-mklink %USERPROFILE%\_vimrc gvimsettings\_vimrc
+```vim
+source $(parent)/gvimsettings/_vimrc
 ```
