@@ -57,7 +57,7 @@ if has( 'gui' )
 	set columns=120
 	set lines=50
 	set guioptions+=b
-	set guifont=Noto\ Mono:h10:cDEFAULT
+	set guifont=Fira\ Code
 	if has( 'win32' )
 		set guifontwide=Dotumche:h10:cHANGEUL
 	endif
